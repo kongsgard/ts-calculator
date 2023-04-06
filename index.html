@@ -3,9 +3,28 @@
   <head>
     <title>TS Geometry Calculator</title>
     <link rel="stylesheet" href="./public/reset.css" />
+    <link rel="stylesheet" href="./public/styles.css" />
   </head>
   <body>
-    <div id="app"></div>
+    <main id="app">
+      <div id="triangle-input-wrapper">
+        <div class="triangle-input">
+          <div class="triangle-point__label">A</div>
+          <input type="number" placeholder="x" class="triangle-point__input" />
+          <input type="number" placeholder="y" class="triangle-point__input" />
+        </div>
+        <div class="triangle-input">
+          <div class="triangle-point__label">B</div>
+          <input type="number" placeholder="x" class="triangle-point__input" />
+          <input type="number" placeholder="y" class="triangle-point__input" />
+        </div>
+        <div class="triangle-input">
+          <div class="triangle-point__label">C</div>
+          <input type="number" placeholder="x" class="triangle-point__input" />
+          <input type="number" placeholder="y" class="triangle-point__input" />
+        </div>
+      </div>
+    </main>
     <script type="module" src="./dist/src/main.js"></script>
   </body>
 </html>

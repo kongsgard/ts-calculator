@@ -74,3 +74,14 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+/*
+  10. Tweak REM size trick
+*/
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
