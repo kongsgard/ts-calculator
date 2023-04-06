@@ -1,56 +1,43 @@
-export class Point {
-  x: number;
-  y: number;
+import { Point } from "./point.js";
 
-  constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
+export class Triangle {
+  a: Point;
+  b: Point;
+  c: Point;
+
+  constructor(a: Point, b: Point, c: Point) {
+    this.a = a;
+    this.b = b;
+    this.c = c;
   }
 
-  normalize(min: number, max: number): Point {
-    return new Point(
-      (this.x - min) / (max - min),
-      (this.y - min) / (max - min)
-    );
+  get points() {
+    return [this.a, this.b, this.c];
   }
 
-  mapToCanvas = (canvas: HTMLCanvasElement): Point => {
-    const OFFSET = 0.05 * canvas.width; // Add some "padding" around the triangle in the canvas.
-    const x = this.x * (canvas.width - 2 * OFFSET) + OFFSET;
-    const y = (canvas.height - 2 * OFFSET) * (1 - this.y) + OFFSET;
-    return new Point(x, y);
-  };
-}
+  draw(canvas: HTMLCanvasElement) {
+    const getMinimumValue = (a: Point, b: Point, c: Point): number => {
+      return Math.min(a.x, a.y, b.x, b.y, c.x, c.y);
+    };
 
-export type Triangle = [Point, Point, Point];
+    const getMaximumValue = (a: Point, b: Point, c: Point): number => {
+      return Math.max(a.x, a.y, b.x, b.y, c.x, c.y);
+    };
 
-export function drawTriangle(
-  canvas: HTMLCanvasElement,
-  a: Point,
-  b: Point,
-  c: Point
-) {
-  const getMinimumValue = (a: Point, b: Point, c: Point): number => {
-    return Math.min(a.x, a.y, b.x, b.y, c.x, c.y);
-  };
+    const min = getMinimumValue(this.a, this.b, this.c);
+    const max = getMaximumValue(this.a, this.b, this.c);
+    const a = this.a.normalize(min, max).mapToCanvas(canvas);
+    const b = this.b.normalize(min, max).mapToCanvas(canvas);
+    const c = this.c.normalize(min, max).mapToCanvas(canvas);
 
-  const getMaximumValue = (a: Point, b: Point, c: Point): number => {
-    return Math.max(a.x, a.y, b.x, b.y, c.x, c.y);
-  };
-
-  const min = getMinimumValue(a, b, c);
-  const max = getMaximumValue(a, b, c);
-  a = a.normalize(min, max).mapToCanvas(canvas);
-  b = b.normalize(min, max).mapToCanvas(canvas);
-  c = c.normalize(min, max).mapToCanvas(canvas);
-
-  const context = canvas.getContext("2d");
-  if (context) {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.beginPath();
-    context.moveTo(a.x, a.y);
-    context.lineTo(b.x, b.y);
-    context.lineTo(c.x, c.y);
-    context.fill();
+    const context = canvas.getContext("2d");
+    if (context) {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.beginPath();
+      context.moveTo(a.x, a.y);
+      context.lineTo(b.x, b.y);
+      context.lineTo(c.x, c.y);
+      context.fill();
+    }
   }
 }

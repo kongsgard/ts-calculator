@@ -1,4 +1,5 @@
-import { drawTriangle, Point, Triangle } from "./triangle.js";
+import { Point } from "./point.js";
+import { Triangle } from "./triangle.js";
 
 const CANVAS_MAX_WIDTH = 500;
 const CANVAS_HEIGHT = 500;
@@ -12,27 +13,30 @@ if (app) {
   app.insertBefore(canvas, document.getElementById("triangle-input-wrapper"));
 }
 
-let a = new Point(0, 0);
-let b = new Point(1, 0);
-let c = new Point(0.5, parseFloat(Math.cos(Math.PI / 6).toFixed(3)));
-drawTriangle(canvas, a, b, c);
+let triangle = new Triangle(
+  new Point(0, 0),
+  new Point(1, 0),
+  new Point(0.5, parseFloat(Math.cos(Math.PI / 6).toFixed(3)))
+);
+triangle.draw(canvas);
 
-let triangle: Triangle = [a, b, c];
 const pointInputs = document.getElementsByClassName("triangle-input");
+const trianglePoints = triangle.points;
 for (let i = 0; i < pointInputs.length; i++) {
+  const point = trianglePoints[i];
   const [x, y] = pointInputs[i].getElementsByTagName("input");
-  x.value = triangle[i].x.toString();
-  y.value = triangle[i].y.toString();
+  x.value = point.x.toString();
+  y.value = point.y.toString();
   x.addEventListener("input", (e: Event) => {
     if (e?.target) {
-      triangle[i].x = parseFloat(x.value);
-      drawTriangle(canvas, triangle[0], triangle[1], triangle[2]);
+      point.x = parseFloat(x.value);
+      triangle.draw(canvas);
     }
   });
   y.addEventListener("input", (e: Event) => {
     if (e?.target) {
-      triangle[i].y = parseFloat(y.value);
-      drawTriangle(canvas, triangle[0], triangle[1], triangle[2]);
+      point.y = parseFloat(y.value);
+      triangle.draw(canvas);
     }
   });
 }
