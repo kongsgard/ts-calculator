@@ -8,20 +8,38 @@
   <body>
     <main id="app">
       <div id="triangle-input-wrapper">
-        <div class="triangle-input">
-          <div class="triangle-point__label">A</div>
-          <input type="number" placeholder="x" class="triangle-point__input" />
-          <input type="number" placeholder="y" class="triangle-point__input" />
+        <div class="field triangle-input">
+          <div class="label">A</div>
+          <input type="number" placeholder="x" />
+          <input type="number" placeholder="y" />
         </div>
-        <div class="triangle-input">
-          <div class="triangle-point__label">B</div>
-          <input type="number" placeholder="x" class="triangle-point__input" />
-          <input type="number" placeholder="y" class="triangle-point__input" />
+        <div class="field triangle-input">
+          <div class="label">B</div>
+          <input type="number" placeholder="x" />
+          <input type="number" placeholder="y" />
         </div>
-        <div class="triangle-input">
-          <div class="triangle-point__label">C</div>
-          <input type="number" placeholder="x" class="triangle-point__input" />
-          <input type="number" placeholder="y" class="triangle-point__input" />
+        <div class="field triangle-input">
+          <div class="label">C</div>
+          <input type="number" placeholder="x" />
+          <input type="number" placeholder="y" />
+        </div>
+      </div>
+      <div id="triangle-output-wrapper">
+        <div class="field triangle-output">
+          <div class="label">Area:</div>
+          <input id="area" style="direction: rtl" disabled />
+        </div>
+        <div class="field triangle-output">
+          <div class="label">Perimeter:</div>
+          <input id="perimeter" style="direction: rtl" disabled />
+        </div>
+        <div class="field angle-calculations">
+          <div class="label">∠A</div>
+          <input id="angle-a" disabled />
+          <div class="label">∠B</div>
+          <input id="angle-b" disabled />
+          <div class="label">∠C</div>
+          <input id="angle-c" disabled />
         </div>
       </div>
     </main>

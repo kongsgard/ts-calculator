@@ -14,13 +14,13 @@ if (app) {
 
 let a = new Point(0, 0);
 let b = new Point(1, 0);
-let c = new Point(0.5, Math.cos(Math.PI / 6));
+let c = new Point(0.5, parseFloat(Math.cos(Math.PI / 6).toFixed(3)));
 drawTriangle(canvas, a, b, c);
 
 let triangle: Triangle = [a, b, c];
-const inputs = document.getElementsByClassName("triangle-input");
-for (let i = 0; i < inputs.length; i++) {
-  const [x, y] = inputs[i].getElementsByTagName("input");
+const pointInputs = document.getElementsByClassName("triangle-input");
+for (let i = 0; i < pointInputs.length; i++) {
+  const [x, y] = pointInputs[i].getElementsByTagName("input");
   x.value = triangle[i].x.toString();
   y.value = triangle[i].y.toString();
   x.addEventListener("input", (e: Event) => {
@@ -34,5 +34,21 @@ for (let i = 0; i < inputs.length; i++) {
       triangle[i].y = parseFloat(y.value);
       drawTriangle(canvas, triangle[0], triangle[1], triangle[2]);
     }
+  });
+}
+
+for (const input of document.getElementsByTagName("input")) {
+  input.addEventListener("input", () => {
+    const number = 245;
+    (document.getElementById("area") as HTMLInputElement).value =
+      number.toString();
+    (document.getElementById("perimeter") as HTMLInputElement).value =
+      number.toString();
+    (document.getElementById("angle-a") as HTMLInputElement).value =
+      number.toString() + "°";
+    (document.getElementById("angle-b") as HTMLInputElement).value =
+      number.toString() + "°";
+    (document.getElementById("angle-c") as HTMLInputElement).value =
+      number.toString() + "°";
   });
 }

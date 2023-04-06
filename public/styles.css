@@ -7,32 +7,46 @@ canvas {
   margin: 0 auto;
 }
 
-#triangle-input-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.triangle-input {
-  background-color: #eeeeee;
-  display: grid;
-  justify-content: center;
-  grid-template-columns: 2rem repeat(2, minmax(auto, 8rem));
-  column-gap: 0.5rem;
-  padding: 0.5rem;
+.field {
   margin: 0 auto;
   border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: #eeeeee;
 }
 
-.triangle-input:not(:last-child) {
-  margin-bottom: 0.2rem;
-}
-
-.triangle-point__label {
+.label {
   display: flex;
   justify-content: center;
   align-items: center;
   color: #495057;
 }
 
-.triangle-point__input {
+#triangle-input-wrapper,
+#triangle-output-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.5rem;
+}
+
+.triangle-input {
+  display: grid;
+  grid-template-columns: 2rem repeat(2, minmax(auto, 8rem));
+  column-gap: 0.75rem;
+  justify-content: center;
+}
+
+.triangle-input:not(:last-child),
+.triangle-output:not(:last-child) {
+  margin-bottom: 0.2rem;
+}
+
+.triangle-output {
+  display: grid;
+  grid-template-columns: 8rem 10rem;
+  column-gap: 1.5rem;
+}
+
+.angle-calculations {
+  display: grid;
+  grid-template-columns: repeat(3, 2.5rem 4rem);
 }
