@@ -41,18 +41,26 @@ for (let i = 0; i < pointInputs.length; i++) {
   });
 }
 
+function computeTriangleProperties() {
+  (document.getElementById("area") as HTMLInputElement).value = triangle
+    .computeArea()
+    .toFixed(2);
+  (document.getElementById("perimeter") as HTMLInputElement).value = triangle
+    .computePerimeter()
+    .toFixed(2);
+
+  const angles = triangle.computeAngles();
+  (document.getElementById("angle-a") as HTMLInputElement).value =
+    angles[0].toFixed(0) + "°";
+  (document.getElementById("angle-b") as HTMLInputElement).value =
+    angles[1].toFixed(0) + "°";
+  (document.getElementById("angle-c") as HTMLInputElement).value =
+    angles[2].toFixed(0) + "°";
+}
+
+computeTriangleProperties();
 for (const input of document.getElementsByTagName("input")) {
   input.addEventListener("input", () => {
-    const number = 245;
-    (document.getElementById("area") as HTMLInputElement).value =
-      number.toString();
-    (document.getElementById("perimeter") as HTMLInputElement).value =
-      number.toString();
-    (document.getElementById("angle-a") as HTMLInputElement).value =
-      number.toString() + "°";
-    (document.getElementById("angle-b") as HTMLInputElement).value =
-      number.toString() + "°";
-    (document.getElementById("angle-c") as HTMLInputElement).value =
-      number.toString() + "°";
+    computeTriangleProperties();
   });
 }
