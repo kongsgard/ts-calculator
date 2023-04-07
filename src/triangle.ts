@@ -37,6 +37,26 @@ export class Triangle {
       context.moveTo(a.x, a.y);
       context.lineTo(b.x, b.y);
       context.lineTo(c.x, c.y);
+      context.closePath();
+
+      context.lineWidth = 5;
+      context.strokeStyle = "#495057";
+      context.stroke();
+
+      const radius = 0.02 * canvas.width;
+      context.beginPath();
+      context.arc(a.x, a.y, radius, 0, 2 * Math.PI, false);
+      context.fillStyle = "#EA4335";
+      context.fill();
+
+      context.beginPath();
+      context.arc(b.x, b.y, radius, 0, 2 * Math.PI, false);
+      context.fillStyle = "#34A853";
+      context.fill();
+
+      context.beginPath();
+      context.arc(c.x, c.y, radius, 0, 2 * Math.PI, false);
+      context.fillStyle = "#4285F4";
       context.fill();
     }
   }
