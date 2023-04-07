@@ -1,4 +1,4 @@
-# TypeScript Geometry Calculator
+# TypeScript Triangle Calculator
 
 An implementation of a simple calculator without any dependencies except for TypeScript (no bundler used).
 
